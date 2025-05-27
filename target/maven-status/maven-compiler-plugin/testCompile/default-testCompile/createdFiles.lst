@@ -1,0 +1,14 @@
+utility\BrowserHandle.class
+pageObjects\HomePage.class
+pageObjects\ShoppingPage.class
+stepDefinition\Hooks.class
+pageObjects\CheckoutPage.class
+pageObjects\FrontPage.class
+pageObjects\LoginPage.class
+pageObjects\BasePage.class
+pageObjects\PaymentPage.class
+testRunner\Runner.class
+pageObjects\CartPage.class
+StepActions\MagnetoActions.class
+pageObjects\FinalPage.class
+stepDefinition\MagnetoSteps.class

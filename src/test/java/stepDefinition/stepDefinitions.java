@@ -2,11 +2,11 @@ package stepDefinition;
 
 import io.cucumber.java.en.*;
 
-import StepActions.MagnetoActions;
+import StepActions.stepActions;
 
-public class MagnetoSteps {
+public class stepDefinitions {
 
-    MagnetoActions actions = new MagnetoActions();
+    stepActions actions = new stepActions();
 
     @Given("open url and click on Sign In")
     public void openUrlAndClickOnSignIn() {
@@ -23,20 +23,21 @@ public class MagnetoSteps {
         actions.navigateToMenJackets();
     }
 
-    @Then("select all jackets and notes the prices")
+    @Then("select all jackets")
     public void selectAllJacketsFromMen() {
         actions.selectAllJackets();
     }
-    @Then("Add the prices")
+    @Then("add all the prices")
     public void Addtheprices() { 
     	actions.sumOfPrices();
     }
 
     @Then("verifying the number on the cart matches number of products selected")
-    public void verifyCartCountMatchesSelection() {
+    public void verifyCartCountMatchesSelection() throws InterruptedException, AssertionError {
         actions.verifyCartCount();
     }
 
+   
     @Then("opening cart and checks remove is available for each item")
     public void checkRemoveOptionInCart() {
         actions.verifyRemoveOptionsInCart();
@@ -47,14 +48,14 @@ public class MagnetoSteps {
         actions.proceedToCheckout();
     }
 
-    @Then("fill in personal details and continues")
+    @Then("fill in personal details and click next")
     public void fillInPersonalDetails() {
         actions.fillPersonalDetailsAndContinue();
     }
 
-    @Then("verify payment info, shipping info, and total")
-    public void verifyPaymentShippingAndTotal() {
-        actions.verifyPaymentShippingAndTotal();
+    @Then("verify payment info, shipping info, and total price is displayed")
+    public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
+        actions.verifyPaymentInfoShippingInfoAndPriceVisibility();
     }
 
     @Then("verify item total is correct")
@@ -62,9 +63,9 @@ public class MagnetoSteps {
         actions.verifyItemTotal();
     }
 
-    @Then("click on finish")
-    public void clickOnFinish() {
-        actions.clickFinish();
+    @Then("click on Place Order")
+    public void clickOnPlaceOrder() {
+        actions.clickPlaceOrder();
     }
 
     @Then("get the order confirmation message")
