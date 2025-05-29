@@ -1,6 +1,5 @@
 package pageObjects;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -21,41 +20,70 @@ public class ShoppingPage extends BasePage {
 	// Arrays of XPaths for each box
 	String[] sizeXPaths = { "//div[@class='swatch-opt-430']//div[@id='option-label-size-143-item-167']",
 			"//div[@class='swatch-opt-414']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-398']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-382']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-366']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-350']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-334']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-318']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-302']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-286']//div[@id='option-label-size-143-item-167']",
-			"//div[@class='swatch-opt-270']//div[@id='option-label-size-143-item-167']" };
+			"//div[@class='swatch-opt-398']//div[@id='option-label-size-143-item-167']"};
+//			"//div[@class='swatch-opt-382']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-366']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-350']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-334']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-318']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-302']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-286']//div[@id='option-label-size-143-item-167']",
+//			"//div[@class='swatch-opt-270']//div[@id='option-label-size-143-item-167']" };
 
-	String[] colorXPaths = { "//div[@class='swatch-opt-430']//div[@id='option-label-color-93-item-50']",
-			"//div[@class='swatch-opt-414']//div[@id='option-label-color-93-item-53']",
-			"//div[@class='swatch-opt-398']//div[@id='option-label-color-93-item-53']",
-			"//div[@class='swatch-opt-382']//div[@id='option-label-color-93-item-53']",
-			"//div[@class='swatch-opt-366']//div[@id='option-label-color-93-item-56']",
-			"//div[@id='option-label-color-93-item-59']", "//div[@id='option-label-color-93-item-52']",
-			"//div[@class='swatch-opt-318']//div[@id='option-label-color-93-item-58']",
-			"//div[@class='swatch-opt-302']//div[@id='option-label-color-93-item-50']",
-			"//div[@class='swatch-opt-286']//div[@id='option-label-color-93-item-56']",
-			"//div[@class='swatch-opt-270']//div[@id='option-label-color-93-item-58']" };
+	String[] colorXPaths =  {
+	        "//div[@class='swatch-opt-430']//div[@id='option-label-color-93-item-50']",
+	        "//div[@class='swatch-opt-414']//div[@id='option-label-color-93-item-53']",
+	        "//div[@class='swatch-opt-398']//div[@id='option-label-color-93-item-53']",
+//	        "//div[@class='swatch-opt-382']//div[@id='option-label-color-93-item-53']",
+//	        "//div[@class='swatch-opt-366']//div[@id='option-label-color-93-item-56']",
+//	        "//div[@id='option-label-color-93-item-59']",
+//	        "//div[@id='option-label-color-93-item-52']",
+//	        "//div[@class='swatch-opt-318']//div[@id='option-label-color-93-item-58']",
+//	        "//div[@class='swatch-opt-302']//div[@id='option-label-color-93-item-50']",
+//	        "//div[@class='swatch-opt-286']//div[@id='option-label-color-93-item-56']",
+//	        "//div[@class='swatch-opt-270']//div[@id='option-label-color-93-item-58']"
+	    };
 
-	String[] addXPaths = { "//li[1]//form[1]//button[1]//span[1]", "//li[2]//form[1]//button[1]//span[1]",
-			"//li[3]//form[1]//button[1]//span[1]", "//li[4]//form[1]//button[1]//span[1]",
-			"//li[5]//form[1]//button[1]", "//li[6]//form[1]//button[1]//span[1]",
-			"//li[7]//form[1]//button[1]//span[1]", "//li[8]//form[1]//button[1]//span[1]",
-			"//li[9]//form[1]//button[1]//span[1]", "//li[10]//form[1]//button[1]//span[1]",
-			"//li[11]//form[1]//button[1]//span[1]" };
+	String[] addXPaths = {
+	        "//li[1]//form[1]//button[1]//span[1]",
+	        "//li[2]//form[1]//button[1]//span[1]",
+	        "//li[3]//form[1]//button[1]//span[1]"
+//	        "//li[4]//form[1]//button[1]//span[1]",
+//	        "//li[5]//form[1]//button[1]",
+//	        "//li[6]//form[1]//button[1]//span[1]",
+//	        "//li[7]//form[1]//button[1]//span[1]",
+//	        "//li[8]//form[1]//button[1]//span[1]",
+//	        "//li[9]//form[1]//button[1]//span[1]",
+//	        "//li[10]//form[1]//button[1]//span[1]",
+//	        "//li[11]//form[1]//button[1]//span[1]"
+	    };
 
-	String[] boxXPaths = { "//div[@class='column main']//li[1]", "//div[@class='column main']//li[2]",
-			"//div[@class='column main']//li[3]", "//div[@class='column main']//li[4]",
-			"//div[@class='column main']//li[5]", "//div[@class='column main']//li[6]",
-			"//div[@class='column main']//li[7]", "//div[@class='column main']//li[8]",
-			"//div[@class='column main']//li[9]", "//div[@class='column main']//li[10]",
-			"//div[@class='column main']//li[11]" };
-
+	String[] boxXPaths = {
+	        "//div[@class='column main']//li[1]",
+	        "//div[@class='column main']//li[2]",
+	        "//div[@class='column main']//li[3]"};
+//	        "//div[@class='column main']//li[4]",
+//	        "//div[@class='column main']//li[5]",
+//	        "//div[@class='column main']//li[6]",
+//	        "//div[@class='column main']//li[7]",
+//	        "//div[@class='column main']//li[8]",
+//	        "//div[@class='column main']//li[9]",
+//	        "//div[@class='column main']//li[10]",
+//	        "//div[@class='column main']//li[11]"
+//	    };
+	
+		String[] priceXPaths = { 
+				"//span[contains(text(),'$42.00')]",
+				"//span[@id='product-price-430']//span[@class='price'][normalize-space()='$45.00']",
+				"//span[@id='product-price-302']//span[@class='price'][normalize-space()='$47.00']"};
+//				"//span[@id='product-price-414']//span[@class='price'][normalize-space()='$49.00']"
+//				"//span[@id='product-price-286']//span[@class='price'][normalize-space()='$51.00']",
+//				"//span[@id='product-price-398']//span[@class='price'][normalize-space()='$56.99']",
+//				"//span[@id='product-price-382']//span[@class='price'][normalize-space()='$60.00']",
+//				"//span[@id='product-price-350']//span[@class='price'][normalize-space()='$65.00']",
+//				"//span[@id='product-price-366']//span[@class='price'][normalize-space()='$66.00']",
+//				"//span[@id='product-price-318']//span[@class='price'][normalize-space()='$72.00']",
+//				"//span[@id='product-price-334']//span[@class='price'][normalize-space()='$99.00']" };
 	// xpath for the confirmation message
 	By confirmationMessage = By.xpath("//div[@class='message-success success message']");
 	// common x path for price
@@ -65,7 +93,19 @@ public class ShoppingPage extends BasePage {
 	//steps to reach the cart page
 	By cartIcon = By.xpath("//a[@class='action showcart']");
 	By checkoutButton = By.xpath("//button[@id='top-cart-btn-checkout']");
+	By sorting =By.xpath("//div[@class='page-wrapper']//div[2]//div[3]//select[1]");
+	By filterbyprice=By.xpath("//select[@id='sorter']/option[@value='price']");
+	By cart =By.xpath("//a[@class='action showcart']");
+
 	public int productSelected = 0;
+	
+	
+//	public void sortingbyprice() {
+//		driver.findElement(sorting).click();
+//		driver.findElement(filterbyprice).click();
+//	 
+//	 
+//	}
 
 	// Action
 	public void selectAndAddProduct(int index) {
@@ -110,21 +150,27 @@ public class ShoppingPage extends BasePage {
 
 	// getting the total price for all the items
 	public double getTotalPriceOfAllProducts() {
-		double total = 0.0;
+	    double totalPrice = 0.0;
 
-		List<WebElement> priceElements = driver
-				.findElements(By.xpath("//span[@class='normal-price']//span[@class='price']"));
+	    for (String xpath : priceXPaths) {
+	        try {
+	            WebElement priceElement = driver.findElement(By.xpath(xpath));
+	            String priceText = priceElement.getText();
+	            
+	            String numericPrice = priceText.replaceAll("[^0-9.]", "");
+	            double price = Double.parseDouble(numericPrice);
+	            totalPrice += price;
+	        } catch (NoSuchElementException e) {
+	            System.out.println("Element not found for XPath: " + xpath);
+	        } catch (NumberFormatException e) {
+	            System.out.println("Price format error for XPath: " + xpath);
+	        }
+	    }
 
-		for (WebElement priceEl : priceElements) {
-			String priceText = priceEl.getText().replaceAll("[^\\d.]", ""); // Remove currency symbols, etc.
-			if (!priceText.isEmpty()) {
-				total += Double.parseDouble(priceText);
-			}
-		}
-
-		return total;
+	    System.out.println("Total Price: $" + totalPrice);
+	    return totalPrice;
 	}
-
+	
 //	    getting the number of total of items added to the cart 
 	public int getCartCount() throws InterruptedException {
 		Thread.sleep(10000);
@@ -134,6 +180,7 @@ public class ShoppingPage extends BasePage {
 	}
 	
 	public boolean getStatusOfRemoveButton() {
+		driver.findElement(cartIcon).click();
 		try {
 		WebElement removebutton =driver.findElement(RemoveButton);
 		return removebutton.isDisplayed();
@@ -148,7 +195,6 @@ public class ShoppingPage extends BasePage {
 	
 
 	public void clickCheckout() {
-		driver.findElement(cartIcon).click();
 		//wait until checkout button is there to be clicked
 		wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
 		

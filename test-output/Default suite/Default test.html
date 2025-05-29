@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed May 28 04:01:05 IST 2025</td>
+<td>Started on:</td><td>Thu May 29 18:12:49 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>40 seconds (40542 ms)</td>
+<tr><td>Total time:</td><td>66 seconds (66524 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,17 +77,25 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='testRunner.Runner.runScenario()'><b>runScenario</b><br>Test class: testRunner.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful purchase of jackets from Magneto", "End-to-End Purchase Flow on Magneto"</td>
-<td><div><pre>java.lang.AssertionError: Cart count 11 does not match selected products 11
-	at StepActions.stepActions.verifyCartCount(stepActions.java:72)
-	at stepDefinition.stepDefinitions.verifyCartCountMatchesSelection(stepDefinitions.java:37)
-	at ✽.verifying the number on the cart matches number of products selected(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:9)
-</pre></div><a href='#' onClick='toggleBox("stack-trace848409667", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace848409667'><pre>java.lang.AssertionError: Cart count 11 does not match selected products 11
-	at StepActions.stepActions.verifyCartCount(stepActions.java:72)
-	at stepDefinition.stepDefinitions.verifyCartCountMatchesSelection(stepDefinitions.java:37)
-	at ✽.verifying the number on the cart matches number of products selected(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:9)
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at StepActions.stepActions.verifyOrderConfirmationMessage(stepActions.java:123)
+	at stepDefinition.stepDefinitions.getOrderConfirmationMessage(stepDefinitions.java:78)
+	at ✽.get the order confirmation message(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:17)
+</pre></div><a href='#' onClick='toggleBox("stack-trace494951073", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace494951073'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at StepActions.stepActions.verifyOrderConfirmationMessage(stepActions.java:123)
+	at stepDefinition.stepDefinitions.getOrderConfirmationMessage(stepDefinitions.java:78)
+	at ✽.get the order confirmation message(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:17)
 </pre></div></td>
-<td>40</td>
+<td>66</td>
 <td>testRunner.Runner@6743e411</td></tr>
 </table><p>
 </body>

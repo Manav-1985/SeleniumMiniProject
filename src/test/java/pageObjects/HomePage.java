@@ -2,9 +2,11 @@ package pageObjects;
 
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 	public HomePage(WebDriver driver, Properties p) {
@@ -24,6 +26,7 @@ public class HomePage extends BasePage {
 	//Action
 	 public void navigateToMenJackets() {
 		// TODO Auto-generated method stub
+		 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Men']")));
 		 action.moveToElement(btnMen).perform();
 		 action.moveToElement(btnTops).perform();
 		 action.moveToElement(btnJackets).click().perform();

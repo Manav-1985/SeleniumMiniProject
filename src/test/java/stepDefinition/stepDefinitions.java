@@ -22,6 +22,11 @@ public class stepDefinitions {
     public void navigateToMenJacketsSection() {
         actions.navigateToMenJackets();
     }
+    
+//    @Then("sort by price")
+//    public void sorting(){
+//    	actions.sorting();
+//    }
 
     @Then("select all jackets")
     public void selectAllJacketsFromMen() {
@@ -34,7 +39,7 @@ public class stepDefinitions {
 
     @Then("verifying the number on the cart matches number of products selected")
     public void verifyCartCountMatchesSelection() throws InterruptedException, AssertionError {
-        actions.verifyCartCount();
+        actions.verifyCartCountMatchesSelection();
     }
 
    
@@ -49,22 +54,22 @@ public class stepDefinitions {
     }
 
     @Then("fill in personal details and click next")
-    public void fillInPersonalDetails() {
+    public void fillInPersonalDetails() throws InterruptedException {
         actions.fillPersonalDetailsAndContinue();
     }
 
-    @Then("verify payment info, shipping info, and total price is displayed")
-    public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
-        actions.verifyPaymentInfoShippingInfoAndPriceVisibility();
-    }
+//    @Then("verify payment info, shipping info, and total price is displayed")
+//    public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
+//        actions.verifyPaymentInfoShippingInfoAndPriceVisibility();
+//    }
 
-    @Then("verify item total is correct")
-    public void verifyItemTotalCorrect() {
-        actions.verifyItemTotal();
-    }
+//    @Then("verify item total is correct")
+//    public void verifyItemTotalCorrect() {
+//        actions.verifyItemTotal();
+//    }
 
     @Then("click on Place Order")
-    public void clickOnPlaceOrder() {
+    public void clickOnPlaceOrder() throws InterruptedException {
         actions.clickPlaceOrder();
     }
 

@@ -2,10 +2,11 @@ package pageObjects;
 
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class FrontPage extends BasePage {
@@ -17,13 +18,12 @@ public class FrontPage extends BasePage {
 		PageFactory.initElements(driver, this);
 	}
 
-
+	
 	//Elements
-	@FindBy(xpath = "//div[@class='panel header']//a[contains(text(),'Sign In')]")
-	WebElement Signin;
+//	WebElement Signin=driver.findElement(By.xpath("//div[@data-ui-id='page-title-wrapper']//h1//span[text()='Thank you for your purchase!']"));
 
 	public void clickSignIn() {
-		// TODO Auto-generated method stub
+		WebElement Signin = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Sign In')]")));
 		Signin.click();
 	}
 }

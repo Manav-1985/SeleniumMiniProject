@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\manav\AppData\Local\Temp\testng-eclipse-513766422\testng-customsuite.xml</span>
+                    <span>C:\Users\manav\AppData\Local\Temp\testng-eclipse-557542454\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -130,10 +130,14 @@
                   </a> <!-- runScenario("Successful purchase of jackets from Magneto", "End-to-End Purchase Flow on Magneto") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Successful purchase of jackets from Magneto","End-to-End Purchase Flow on Magneto")</span>
-                  <div class="stack-trace">java.lang.AssertionError: Cart count 11 does not match selected products 11
-	at StepActions.stepActions.verifyCartCount(stepActions.java:72)
-	at stepDefinition.stepDefinitions.verifyCartCountMatchesSelection(stepDefinitions.java:37)
-	at ✽.verifying the number on the cart matches number of products selected(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:9)
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at StepActions.stepActions.verifyOrderConfirmationMessage(stepActions.java:123)
+	at stepDefinition.stepDefinitions.getOrderConfirmationMessage(stepDefinitions.java:78)
+	at ✽.get the order confirmation message(file:///C:/Users/manav/miniProject/src/test/resources/features/Project.feature:17)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -145,7 +149,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\manav\AppData\Local\Temp\testng-eclipse-513766422\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\manav\AppData\Local\Temp\testng-eclipse-557542454\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -206,12 +210,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'testRunner.Runner')
-data.setCell(0, 3, 40116);
+data.setCell(0, 3, 66079);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 40 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -239,18 +243,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">testRunner.Runner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@655a01d8)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@76332405)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("Successful purchase of jackets from Magneto", "End-to-End Purchase Flow on Magneto")</span>
-                <span class="method-start">380 ms</span>
+                <span class="method-start">404 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">40500 ms</span>
+                <span class="method-start">66491 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PaymentPage extends BasePage {
 
@@ -19,6 +20,7 @@ public class PaymentPage extends BasePage {
 	By shippingtotal=By.xpath("//tbody//tr[@class='totals shipping excl']//td[@class='amount']//span[@class='price']");
 	By itemtotal=By.xpath("//tbody//tr[@class='totals sub']//td[@class='amount']//span[@class='price']");
 	By btnplaceorder=By.xpath("//button[@title='Place Order']");
+	By billingSameAsShippingCheckbox = By.xpath("//*[@id='billing-address-same-as-shipping-checkmo']");
 	//Methods
 	public boolean isPaymentInfoDisplayed() {
 		
@@ -64,6 +66,22 @@ public class PaymentPage extends BasePage {
 		WebElement Placeorder=driver.findElement(btnplaceorder);
 		return Placeorder;
 	}
+	
+	public void checkBillingSameAsShipping() throws InterruptedException {
+
+		// Wait until payment info block is visible to ensure payment page is loaded
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(paymentinfo));
+Thread.sleep(5000);
+		WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(billingSameAsShippingCheckbox));
+
+		if (!checkbox.isSelected()) {
+			System.out.println("Checkbox is not selected. Clicking it.");
+			checkbox.click();
+		} else {
+			System.out.println("Checkbox is already selected.");
+		}
+	}
+
 	
 //cart total
 	

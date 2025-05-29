@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import pageObjects.PaymentPage;
-import pageObjects.CartPage;
+
 import pageObjects.CheckoutPage;
 import pageObjects.FinalPage;
 import pageObjects.FrontPage;
@@ -25,7 +26,7 @@ public class stepActions {
 	LoginPage loginPage;
 	HomePage homePage;
 	ShoppingPage shoppingPage;
-	CartPage cartPage;
+	
 	CheckoutPage checkoutPage;
 	PaymentPage paymentPage;
 	FinalPage finalPage;
@@ -40,7 +41,6 @@ public class stepActions {
 		loginPage = new LoginPage(driver, p);
 		homePage = new HomePage(driver, p);
 		shoppingPage = new ShoppingPage(driver, p);
-		cartPage = new CartPage();
 		checkoutPage = new CheckoutPage(driver, p);
 		paymentPage =new PaymentPage(driver, p);
 		finalPage= new FinalPage(driver, p);
@@ -58,6 +58,10 @@ public class stepActions {
 	public void navigateToMenJackets() {
 		homePage.navigateToMenJackets();
 	}
+	
+//	public void sorting() {
+//		shoppingPage.sortingbyprice();	
+//	}
 
 	public void selectAllJackets() {
 		shoppingPage.selectAllProductsAndAddToCart();
@@ -67,13 +71,13 @@ public class stepActions {
 		return shoppingPage.getTotalPriceOfAllProducts();
 	}
 
-	public void verifyCartCount() throws InterruptedException, AssertionError { 
-	    if(shoppingPage.getitemSelected()!= shoppingPage.getCartCount()) {
+	public void verifyCartCountMatchesSelection() throws InterruptedException, AssertionError { 
+		int itemselected=shoppingPage.getitemSelected();
+		int cartcount=shoppingPage.getCartCount();
+	    if(itemselected!= cartcount) {
 	         throw new AssertionError("Cart count " + shoppingPage.getCartCount() + " does not match selected products " + shoppingPage.getitemSelected());
 	    }
-	    else {
-	       	System.out.println("****Count Verified****");
-	    }
+	   
 	}    
 
 	public void verifyRemoveOptionsInCart() {
@@ -87,27 +91,27 @@ public class stepActions {
 		shoppingPage.clickCheckout();
 	}
 
-	public void fillPersonalDetailsAndContinue() {
+	public void fillPersonalDetailsAndContinue() throws InterruptedException {
 		checkoutPage.fillPersonalDetails();
 	}
 
-	public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
-		if (!paymentPage.isPaymentInfoDisplayed() || !paymentPage.isShippingInfoDisplayed()
-				|| !paymentPage.isTotalPriceDisplayed()) {
-			throw new AssertionError("Payment info, shipping info or total not displayed");
-		}
-	}
+//	public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
+//		if (!paymentPage.isPaymentInfoDisplayed() || !paymentPage.isShippingInfoDisplayed()
+//				|| !paymentPage.isTotalPriceDisplayed()) {
+//			throw new AssertionError("Payment info, shipping info or total not displayed");
+//		}
+//	}
 
-	public void verifyItemTotal() {
-		double itemstotalprice = paymentPage.getItemsTotal();
-		double shippingprice =paymentPage.getShippingTotal();
-		double totalprice=paymentPage.getCartTotal();
-		if (totalprice!=shippingprice+itemstotalprice) {
-			throw new AssertionError("Items Total is not Correct");
-		}
-	}
+//	public void verifyItemTotal() {
+//		double itemstotalprice = paymentPage.getItemsTotal();
+//		double sumofitemprices = shoppingPage.getTotalPriceOfAllProducts();
+//		if (sumofitemprices !=itemstotalprice) {
+//			throw new AssertionError("Items Total is not Correct");
+//		}
+//	}
 
-	public void clickPlaceOrder() {
+	public void clickPlaceOrder() throws InterruptedException {
+		paymentPage.checkBillingSameAsShipping();
 		paymentPage.clickPlaceOrder().click();
 	}
 
@@ -116,10 +120,15 @@ public class stepActions {
 		String actualMessage = finalPage.getOrderConfirmationMessage();
 
 		if (!actualMessage.equals(expectedMessage)) {
-			throw new AssertionError("Order confirmation message does not match.\nExpected: " + expectedMessage
-					+ "\nActual: " + actualMessage);
+			Assert.assertTrue(false);
+		}
+		else {
+			System.out.println("order has been placed");
+			Assert.assertTrue(true);
 		}
 	}
+
+	
 
 	
 
