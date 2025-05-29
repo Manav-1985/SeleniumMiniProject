@@ -25,7 +25,7 @@ public class HomePage extends BasePage {
 	
 	//Action
 	 public void navigateToMenJackets() {
-		// TODO Auto-generated method stub
+		
 		 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Men']")));
 		 action.moveToElement(btnMen).perform();
 		 action.moveToElement(btnTops).perform();

@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -7,8 +8,13 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 public class ShoppingPage extends BasePage {
 	public ShoppingPage(WebDriver driver, Properties p) {
@@ -16,7 +22,6 @@ public class ShoppingPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	List<Double> prices = new ArrayList<Double>();
 	// Arrays of XPaths for each box
 	String[] sizeXPaths = { "//div[@class='swatch-opt-430']//div[@id='option-label-size-143-item-167']",
 			"//div[@class='swatch-opt-414']//div[@id='option-label-size-143-item-167']",
@@ -95,10 +100,9 @@ public class ShoppingPage extends BasePage {
 	By checkoutButton = By.xpath("//button[@id='top-cart-btn-checkout']");
 	By sorting =By.xpath("//div[@class='page-wrapper']//div[2]//div[3]//select[1]");
 	By filterbyprice=By.xpath("//select[@id='sorter']/option[@value='price']");
-	By cart =By.xpath("//a[@class='action showcart']");
 
-	public int productSelected = 0;
 	
+	public int noOfProductsSelected = 0;
 	
 //	public void sortingbyprice() {
 //		driver.findElement(sorting).click();
@@ -107,6 +111,7 @@ public class ShoppingPage extends BasePage {
 //	 
 //	}
 
+	
 	// Action
 	public void selectAndAddProduct(int index) {
 		try {
@@ -126,7 +131,7 @@ public class ShoppingPage extends BasePage {
 
 			// Wait for confirmation
 			wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationMessage));
-			productSelected++;
+			noOfProductsSelected++;
 
 			System.out.println("Box " + (index + 1) + " added to cart.");
 
@@ -138,7 +143,7 @@ public class ShoppingPage extends BasePage {
 	// getting total number of items
 
 	public int getitemSelected() {
-		return productSelected;
+		return noOfProductsSelected;
 	}
 
 	// adding items to cart
@@ -150,47 +155,62 @@ public class ShoppingPage extends BasePage {
 
 	// getting the total price for all the items
 	public double getTotalPriceOfAllProducts() {
-	    double totalPrice = 0.0;
+		double totalPrice = 0.0;
 
-	    for (String xpath : priceXPaths) {
-	        try {
-	            WebElement priceElement = driver.findElement(By.xpath(xpath));
-	            String priceText = priceElement.getText();
-	            
-	            String numericPrice = priceText.replaceAll("[^0-9.]", "");
-	            double price = Double.parseDouble(numericPrice);
-	            totalPrice += price;
-	        } catch (NoSuchElementException e) {
-	            System.out.println("Element not found for XPath: " + xpath);
-	        } catch (NumberFormatException e) {
-	            System.out.println("Price format error for XPath: " + xpath);
-	        }
-	    }
+		for (String xpath : priceXPaths) {
+			try {
+				WebElement priceElement = driver.findElement(By.xpath(xpath));
+				String priceText = priceElement.getText();
 
-	    System.out.println("Total Price: $" + totalPrice);
-	    return totalPrice;
+				String numericPrice = priceText.replaceAll("[^0-9.]", "");
+				double price = Double.parseDouble(numericPrice);
+				totalPrice += price;
+			} catch (NoSuchElementException e) {
+				System.out.println("Element not found for XPath: " + xpath);
+			} catch (NumberFormatException e) {
+				System.out.println("Price format error for XPath: " + xpath);
+			}
+		}
+
+		System.out.println("Total Price: $" + totalPrice);
+		return totalPrice;
 	}
 	
-//	    getting the number of total of items added to the cart 
+//  getting the number of total of items added to the cart 
 	public int getCartCount() throws InterruptedException {
-		Thread.sleep(10000);
-		WebElement totalItemsCount = driver.findElement(totalitems);
-		int totalItems = Integer.parseInt(totalItemsCount.getText());
-		return totalItems;
+//		this.wait = new WebDriverWait(driver, Duration.ofSeconds(16));
+		wait.until(ExpectedConditions.textToBe(totalitems, "3"));
+	    // Once the count is 3, return it
+	    return Integer.parseInt(driver.findElement(totalitems).getText().trim());
 	}
 	
 	public boolean getStatusOfRemoveButton() {
-		driver.findElement(cartIcon).click();
 		try {
-		WebElement removebutton =driver.findElement(RemoveButton);
-		return removebutton.isDisplayed();
-		}
-		catch(NoSuchElementException e){//try catch to handle the exception the element not found 
-			System.out.println("Remove button not found:"+e.getMessage());
+			// Open cart
+			driver.findElement(cartIcon).click();
+
+			// Get all remove buttons
+			List<WebElement> removeButtons = driver.findElements(RemoveButton);
+
+			// Check if all remove buttons are displayed
+			for (WebElement button : removeButtons) {
+				if (!button.isDisplayed()) {
+					System.out.println("One or more remove buttons are not visible.");
+					return false;
+				}
+			}
+
+			return true;
+
+		} catch (NoSuchElementException e) {
+			System.out.println("Element not found: " + e.getMessage());
+			return false;
+
+		} catch (WebDriverException e) {
+			System.out.println("WebDriver error occurred: " + e.getMessage());
 			return false;
 		}
-		
-		
+
 	}
 	
 

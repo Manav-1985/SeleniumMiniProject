@@ -1,6 +1,5 @@
 package StepActions;
 
-import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -30,9 +29,6 @@ public class stepActions {
 	CheckoutPage checkoutPage;
 	PaymentPage paymentPage;
 	FinalPage finalPage;
-
-	// To keep track of selected products prices
-	private List<Double> selectedProductPrices;
 
 	public stepActions() {
 		driver = BrowserHandle.getDriver();
@@ -95,20 +91,23 @@ public class stepActions {
 		checkoutPage.fillPersonalDetails();
 	}
 
-//	public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
-//		if (!paymentPage.isPaymentInfoDisplayed() || !paymentPage.isShippingInfoDisplayed()
-//				|| !paymentPage.isTotalPriceDisplayed()) {
-//			throw new AssertionError("Payment info, shipping info or total not displayed");
+	public void verifyPaymentInfoShippingInfoVisibility() {
+		if (!paymentPage.isOrderSummaryDisplayed() || !paymentPage.isShippingInfoDisplayed()
+			) {
+			throw new AssertionError("Order Summary , shipping info and totalPrice not displayed");
+		}
+	}
+	
+//	public void verifyItemTotal() {
+//		if(shoppingPage.getTotalPriceOfAllProducts()!=paymentPage.getItemsTotal()) {
+//			Assert.assertTrue(false,"Total prices does not match");
 //		}
+//		else {
+//			Assert.assertTrue(true,"Total price of items matches");
+//		}
+//			
 //	}
 
-//	public void verifyItemTotal() {
-//		double itemstotalprice = paymentPage.getItemsTotal();
-//		double sumofitemprices = shoppingPage.getTotalPriceOfAllProducts();
-//		if (sumofitemprices !=itemstotalprice) {
-//			throw new AssertionError("Items Total is not Correct");
-//		}
-//	}
 
 	public void clickPlaceOrder() throws InterruptedException {
 		paymentPage.checkBillingSameAsShipping();
@@ -116,17 +115,21 @@ public class stepActions {
 	}
 
 	public void verifyOrderConfirmationMessage() {
+		
+		
 		String expectedMessage = p.getProperty("Confirmationmsg");
 		String actualMessage = finalPage.getOrderConfirmationMessage();
+		
 
 		if (!actualMessage.equals(expectedMessage)) {
 			Assert.assertTrue(false);
-		}
-		else {
+		} else {
 			System.out.println("order has been placed");
 			Assert.assertTrue(true);
+			
 		}
 	}
+
 
 	
 

@@ -8,17 +8,17 @@ public class stepDefinitions {
 
     stepActions actions = new stepActions();
 
-    @Given("open url and click on Sign In")
+    @Given("the user is on the homepage and clicks Sign In")
     public void openUrlAndClickOnSignIn() {
         actions.openUrlAndClickSignIn();
     }
 
-    @When("log in with valid credentials")
+    @When("the user logs in with valid credentials")
     public void logInWithValidCredentials() {
         actions.logInWithValidCredentials();
     }
 
-    @Then("navigate to Men Jackets section")
+    @Then("navigates to the Men Jackets section")
     public void navigateToMenJacketsSection() {
         actions.navigateToMenJackets();
     }
@@ -32,48 +32,48 @@ public class stepDefinitions {
     public void selectAllJacketsFromMen() {
         actions.selectAllJackets();
     }
-    @Then("add all the prices")
+    @Then("adds up all the prices")
     public void Addtheprices() { 
     	actions.sumOfPrices();
     }
 
-    @Then("verifying the number on the cart matches number of products selected")
+    @Then("the number in the cart should match the number of selected products")
     public void verifyCartCountMatchesSelection() throws InterruptedException, AssertionError {
         actions.verifyCartCountMatchesSelection();
     }
 
    
-    @Then("opening cart and checks remove is available for each item")
+    @Then("the cart should show a remove button for each item")
     public void checkRemoveOptionInCart() {
         actions.verifyRemoveOptionsInCart();
     }
 
-    @Then("proceed to checkout")
+    @Then("the user proceeds to checkout")
     public void proceedToCheckout() {
         actions.proceedToCheckout();
     }
 
-    @Then("fill in personal details and click next")
+    @Then("fills in personal details and clicks Next")
     public void fillInPersonalDetails() throws InterruptedException {
         actions.fillPersonalDetailsAndContinue();
     }
 
-//    @Then("verify payment info, shipping info, and total price is displayed")
-//    public void verifyPaymentInfoShippingInfoAndPriceVisibility() {
-//        actions.verifyPaymentInfoShippingInfoAndPriceVisibility();
-//    }
+    @Then("the payment info, shipping info, and total price should be displayed")
+    public void verifyPaymentInfoShippingInfoVisibility() {
+        actions.verifyPaymentInfoShippingInfoVisibility();
+    }
 
-//    @Then("verify item total is correct")
+//    @Then("the item total should be correct")
 //    public void verifyItemTotalCorrect() {
 //        actions.verifyItemTotal();
 //    }
 
-    @Then("click on Place Order")
+    @Then("the user clicks on Place Order")
     public void clickOnPlaceOrder() throws InterruptedException {
         actions.clickPlaceOrder();
     }
 
-    @Then("get the order confirmation message")
+    @Then("the order confirmation message should be displayed")
     public void getOrderConfirmationMessage() {
         actions.verifyOrderConfirmationMessage();
     }

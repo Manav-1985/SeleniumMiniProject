@@ -14,47 +14,47 @@ public class PaymentPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	//Locators
-	By paymentinfo= By.xpath("//div[@class='opc-block-summary']");
+	By ordersummary= By.xpath("//div[@class='opc-block-summary']");
 	By shippinginfo =By.xpath("//div[@class='ship-to']//div[@class='shipping-information-content']");
-	By carttotal =By.xpath("//strong//span[@class='price']");
-	By shippingtotal=By.xpath("//tbody//tr[@class='totals shipping excl']//td[@class='amount']//span[@class='price']");
-	By itemtotal=By.xpath("//tbody//tr[@class='totals sub']//td[@class='amount']//span[@class='price']");
+	By mastertotal =By.xpath("//table[@class='data table table-totals']//tbody//tr[3]//td//strong//span");
+//	By shippingtotal=By.xpath("//tbody//tr[@class='totals shipping excl']//td[@class='amount']//span[@class='price']");
+	By itemtotal=By.xpath("//table[@class='data table table-totals']//tbody//tr[1]//td//span");
 	By btnplaceorder=By.xpath("//button[@title='Place Order']");
 	By billingSameAsShippingCheckbox = By.xpath("//*[@id='billing-address-same-as-shipping-checkmo']");
 	//Methods
-	public boolean isPaymentInfoDisplayed() {
-		
-			return driver.findElement(paymentinfo).isDisplayed();
+	public boolean isOrderSummaryDisplayed() {
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(ordersummary)));
+			return driver.findElement(ordersummary).isDisplayed();
 	}	
 
 
 
 	public boolean isShippingInfoDisplayed() {
-		return driver.findElement(paymentinfo).isDisplayed();
+		return driver.findElement(ordersummary).isDisplayed();
 		
 	}
 
 	public boolean isTotalPriceDisplayed() {
 		// TODO Auto-generated method stub
-		return driver.findElement(carttotal).isDisplayed();
+		return driver.findElement(mastertotal).isDisplayed();
 	}
 
 
 
-	public double getCartTotal() {
-	 String totalPriceText =driver.findElement(carttotal).getText().replaceAll("[^\\d.]", "");
-		if(totalPriceText.isEmpty()) {
-			 throw new RuntimeException("Item total String not found or could not be parsed.");
-		}
-		Double totalprice=Double.parseDouble(totalPriceText);
-		return totalprice;
-		
-	}
-	public double getShippingTotal() {
-		String shippingPriceText =driver.findElement(shippingtotal).getText().replaceAll("[^\\d.]", "");
-		Double shippingprice=Double.parseDouble(shippingPriceText);
-		return shippingprice;
-	}
+//	public double getMasterTotal() {
+//	 String totalPriceText =driver.findElement(mastertotal).getText().replaceAll("[^\\d.]", "");
+//		if(totalPriceText.isEmpty()) {
+//			 throw new RuntimeException("Item total String not found or could not be parsed.");
+//		}
+//		Double totalprice=Double.parseDouble(totalPriceText);
+//		return totalprice;
+//		
+//	}
+//	public double getShippingTotal() {
+//		String shippingPriceText =driver.findElement(shippingtotal).getText().replaceAll("[^\\d.]", "");
+//		Double shippingprice=Double.parseDouble(shippingPriceText);
+//		return shippingprice;
+//	}
 	
 	public double getItemsTotal() {
 		String itemsPriceText =driver.findElement(itemtotal).getText().replaceAll("[^\\d.]", "");
@@ -69,9 +69,9 @@ public class PaymentPage extends BasePage {
 	
 	public void checkBillingSameAsShipping() throws InterruptedException {
 
-		// Wait until payment info block is visible to ensure payment page is loaded
+		//Wait until payment info block is visible to ensure payment page is loaded
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(paymentinfo));
-Thread.sleep(5000);
+        Thread.sleep(5000);
 		WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(billingSameAsShippingCheckbox));
 
 		if (!checkbox.isSelected()) {
@@ -82,9 +82,5 @@ Thread.sleep(5000);
 		}
 	}
 
-	
-//cart total
-	
-	
-//	shipping//tbody//tr[@class='totals shipping excl']//td[@class='amount']//span[@class='price']
+
 }

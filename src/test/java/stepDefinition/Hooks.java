@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import utility.BrowserHandle;
 
@@ -19,6 +20,11 @@ public class Hooks {
 		p=BrowserHandle.p;
 		driver.get(p.getProperty("BaseUrl"));
 
+	}
+	
+	@After
+	public void teardown() {
+		driver.quit();
 	}
 
 }

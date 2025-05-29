@@ -8,7 +8,6 @@ pageObjects\LoginPage.class
 pageObjects\BasePage.class
 pageObjects\PaymentPage.class
 testRunner\Runner.class
-pageObjects\CartPage.class
 stepDefinition\stepDefinitions.class
 StepActions\stepActions.class
 pageObjects\FinalPage.class
